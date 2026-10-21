@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>轻知</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="settings.js" defer></script>
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <header>
+    <img class="logo" src="icons/icon128.png" width="42" height="42" alt="轻知">
+    <div><h1>轻知</h1><p>无所不知，知你所想</p></div>
+    <label class="switch main-switch"><input id="enabled" type="checkbox" aria-label="启用轻知"><span></span></label>
+  </header>
+  <main>
+    <label class="row"><span>隐藏右侧栏<small>创作中心、热搜、推广等</small></span><input id="hideSidebar" type="checkbox"></label>
+    <label class="row"><span>隐藏 AI Works / 故事</span><input id="hideAiNav" type="checkbox"></label>
+    <label class="row"><span>隐藏直答 / 加号入口</span><input id="hideHeaderActions" type="checkbox"></label>
+    <label class="row"><span>隐藏右下角看山浮窗</span><input id="hideMascot" type="checkbox"></label>
+    <label class="row"><span>无图模式<small>也可点击搜索框左侧的鱼切换</small></span><input id="imageLess" type="checkbox"></label>
+    <label class="row"><span>加宽正文</span><input id="widenContent" type="checkbox"></label>
+    <section class="width-section" aria-label="正文宽度">
+      <div class="width-title"><label for="width">正文最大宽度</label><output id="widthLabel" for="width"></output></div>
+      <input id="width" type="range" min="960" max="1920" step="40" value="1440">
+      <label class="full-width"><input id="fullWidth" type="checkbox">随窗口铺满</label>
+      <p class="hint">默认 1440 px；小窗口自动适配。</p>
+    </section>
+  </main>
+  <footer><button id="reset" type="button">恢复默认</button><span id="status" role="status" aria-live="polite">设置仅保存在本机</span></footer>
+</body>
+</html>

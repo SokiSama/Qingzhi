@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>轻知 · 本地布局验证</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f6f8; color: #202632; font: 16px/1.7 system-ui, sans-serif; }
+    .AppHeader { background: white; box-shadow: 0 1px 3px #dde1e6; }
+    .AppHeader-inner { width: 1000px; height: 64px; margin: auto; display: flex; align-items: center; gap: 24px; }
+    .brand { font-size: 30px; color: #1671f4; text-decoration: none; font-weight: 700; }
+    .AppHeader ul { list-style: none; display: flex; align-items: center; gap: 24px; padding: 0; margin: 0; }
+    a { color: inherit; text-decoration: none; }
+    .SearchBar { margin-left: auto; flex: 1; max-width: 420px; }
+    .SearchBar-input { border-radius: 24px; border: 1px solid #dae0e8; padding: 9px 16px; background: #f9fafb; width: 280px; }
+    .AppHeader button { border: 0; background: #e8efff; color: #176cf1; border-radius: 20px; padding: 8px 14px; }
+    .avatar { border-radius: 50%; background: #d6e6de; width: 30px; height: 30px; display: grid; place-items: center; }
+    .Topstory-container { display: flex; align-items: flex-start; width: 1000px; margin: 14px auto; gap: 12px; }
+    .Topstory-mainColumn { width: 694px; flex-shrink: 0; }
+    .Topstory-sideBar { width: 294px; flex-shrink: 0; }
+    .card { background: white; box-shadow: 0 1px 3px #dde1e6; border-radius: 3px; margin-bottom: 12px; }
+    .composer { padding: 20px 24px; color: #7e8c9e; }
+    .composer div { display: flex; justify-content: space-around; margin-top: 25px; color: #455367; border-top: 1px solid #f1f3f5; padding-top: 16px; }
+    article { padding: 24px; border-bottom: 1px solid #f0f2f5; }
+    h2 { font-size: 20px; margin: 0 0 10px; }
+    article p { margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 24px; color: #8593a7; margin-top: 18px; font-size: 14px; }
+    .vote { border-radius: 4px; color: #176cf1; background: #eaf1ff; padding: 2px 12px; }
+    .Topstory-sideBar .card { padding: 20px; }
+    .note { margin: 15px auto; padding: 10px 16px; max-width: 1440px; color: #5f718a; font-size: 12px; }
+    #results { white-space: pre-wrap; margin: 16px; font: 13px/1.6 monospace; }
+    body[data-test-status="passed"] #results { color: #107442; }
+    body[data-test-status="failed"] #results { color: #b22222; }
+  </style>
+  <link rel="stylesheet" href="../extension/clean.css">
+  <script src="mock-chrome.js"></script>
+  <script src="../extension/settings.js"></script>
+  <script src="../extension/content.js"></script>
+  <script src="fixture.js" defer></script>
+</head>
+<body>
+  <header class="AppHeader"><div class="AppHeader-inner">
+    <a href="#" class="brand">知乎</a>
+    <ul><li><a href="#">关注</a></li><li><a href="#"><strong>推荐</strong></a></li><li><a href="#">热榜</a></li><li><a href="#">专栏</a></li><li><a id="ai-nav" href="/aiworks">AI Works <sup>Beta</sup></a></li><li><a id="story-nav" href="/story">故事</a></li></ul>
+    <div class="SearchBar"><input class="SearchBar-input" aria-label="搜索" placeholder="搜索你感兴趣的内容"></div>
+    <a id="ai-answer" href="https://ai.zhihu.com/">直答</a><button id="plus" aria-label="发布内容">+</button>
+    <a id="messages" href="#">消息</a><a href="#">私信</a><img id="header-avatar" class="Avatar avatar" width="30" height="30" alt="我的头像" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Crect width='30' height='30' fill='%23d6e6de'/%3E%3C/svg%3E">
+  </div></header>
+  <div class="Topstory-container">
+    <main class="Topstory-mainColumn">
+      <div class="card composer">分享此刻的想法…<div><span>提问题</span><span>写回答</span><span>写文章</span><span>发视频</span></div></div>
+      <div class="card Topstory-mainColumnCard">
+        <article><h2>如何给阅读留出更多空间？</h2><p class="RichContent-inner">净化后的信息流会占用原来的双栏空间，随窗口宽度自动适配。你仍然可以搜索、阅读、评论和收藏，正文的文字大小保持原来的设置。</p><div class="actions"><span class="vote">▲ 赞同 1407</span><span>231 条评论</span><span>★ 443</span><span>♥ 230</span><span>分享</span><span>…</span></div></article>
+        <article id="media-fixture"><div id="feed-cover" class="RichContent-cover"><img id="feed-image" width="120" height="60" alt="测试封面" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Crect width='120' height='60' fill='%23a9c7ea'/%3E%3C/svg%3E"></div><p class="RichContent-inner">无图模式会收起这里的封面，文字继续显示。</p><video id="feed-video" controls width="180" height="80"></video><div id="feed-background" style="width:80px;height:30px;background-image:url(data:image/svg+xml,%3Csvg%3E%3C/svg%3E)"></div></article>
+        <article><h2>让界面回到内容本身</h2><div class="AuthorInfo-avatar"><picture id="author-avatar-picture"><img id="author-avatar" width="24" height="24" alt="作者头像" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect width='24' height='24' fill='%23d6e6de'/%3E%3C/svg%3E"></picture></div><div id="comment-avatar" class="CommentItem-avatar" style="width:24px;height:24px;background-image:url(data:image/svg+xml,%3Csvg%3E%3C/svg%3E)"></div><p id="answer-text" class="RichContent-inner">这里提到了 AI Works、故事和直答。这些文字属于正文，应该完整保留。净化规则只针对导航入口，不会根据关键词删除回答。</p><div class="actions"><span class="vote">▲ 赞同 1854</span><span>180 条评论</span><span>★ 361</span><span>♥ 101</span><span>分享</span></div></article>
+        <article><h2>宽度由你决定</h2><p class="RichContent-inner">点击扩展图标，可以在 960–1920 px 之间调节宽度，也可以让正文随窗口铺满。侧栏、顶部导航和创作入口都能单独开关。</p><div class="actions"><span class="vote">▲ 赞同 732</span><span>301 条评论</span><span>★ 348</span><span>♥ 17</span><span>分享</span></div></article>
+      </div>
+    </main>
+    <aside id="sidebar" class="Topstory-sideBar"><div class="card">创作中心<br>开始创作</div><div class="card">大家都在搜<br>热门话题</div><div class="card">盐言作者平台</div></aside>
+  </div>
+  <div class="CornerButtons" style="position:fixed;right:16px;bottom:16px"><button id="back-to-top" aria-label="回到顶部">↑</button><div class="CornerAnimayedFlex CornerAnimayedFlex--kanshan CornerAnimayedFlex--kanshanEntry"><button id="mascot" class="KanshanCornerButton" aria-label="看山">Hi</button></div></div>
+  <p class="note">本地模拟页面 · 用于验证净化规则，不代表已登录知乎的实时页面。</p>
+  <pre id="results">正在验证…</pre>
+</body>
+</html>

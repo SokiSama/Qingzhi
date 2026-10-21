@@ -1,0 +1,35 @@
+:root { color-scheme: light dark; font: 14px/1.5 system-ui, "Microsoft YaHei", sans-serif; color: #22314a; background: #f7f9fc; }
+* { box-sizing: border-box; }
+body { width: 340px; margin: 0; padding: 22px; }
+header { display: flex; align-items: center; gap: 11px; margin-bottom: 20px; }
+.logo { display: block; flex: 0 0 42px; width: 42px; height: 42px; border-radius: 13px; object-fit: cover; }
+h1 { margin: 0; font-size: 19px; letter-spacing: .5px; }
+header p { margin: 1px 0 0; font-size: 12px; color: #7d899b; }
+main { background: #fff; border: 1px solid #e7ebf2; border-radius: 14px; padding: 0 15px; }
+.row { display: flex; align-items: center; justify-content: space-between; min-height: 49px; gap: 10px; border-bottom: 1px solid #f0f2f6; cursor: pointer; }
+.row:first-child { padding-block: 12px; }
+small { display: block; color: #8591a3; font-size: 11px; }
+input[type="checkbox"], input[type="range"] { accent-color: #176cf1; cursor: pointer; }
+.row input { width: 16px; height: 16px; flex-shrink: 0; }
+.switch { position: relative; margin-left: auto; width: 36px; height: 22px; }
+.switch input { opacity: 0; width: 100%; height: 100%; position: absolute; margin: 0; }
+.switch span { display: block; width: 36px; height: 22px; background: #c1cad7; border-radius: 20px; pointer-events: none; }
+.switch span::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: #fff; border-radius: 50%; transition: transform .15s; }
+.switch input:checked + span { background: #176cf1; }
+.switch input:checked + span::after { transform: translateX(14px); }
+.switch input:focus-visible + span { outline: 2px solid #176cf1; outline-offset: 3px; }
+.width-section { padding-block: 16px 12px; }
+.width-title { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 10px; }
+output { color: #176cf1; font-variant-numeric: tabular-nums; }
+input[type="range"] { display: block; width: 100%; margin: 0 0 12px; }
+.full-width { display: flex; align-items: center; gap: 6px; font-size: 12px; cursor: pointer; }
+.hint { font-size: 11px; color: #8591a3; margin: 8px 0 0; }
+footer { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; font-size: 11px; color: #8591a3; }
+button { border: 0; padding: 3px 0; color: #176cf1; background: none; font: inherit; cursor: pointer; }
+input:disabled { cursor: default; opacity: .45; }
+@media (prefers-color-scheme: dark) {
+  :root { color: #e0e7f3; background: #171d27; }
+  main { background: #202938; border-color: #334053; }
+  .row { border-color: #334053; }
+  output, button { color: #8ab5ff; }
+}

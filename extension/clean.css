@@ -1,0 +1,160 @@
+/* All changes are gated: turning off the extension restores Zhihu's own layout. */
+html[data-cz-enabled][data-cz-hide-mascot] :is(
+  .CornerAnimayedFlex--kanshan, .KanshanCornerButton,
+  .CornerButtons [aria-label="看山"]
+) {
+  display: none !important;
+}
+
+.AppHeader .cz-fish-toggle.cz-fish-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 34px;
+  padding: 3px 7px;
+  margin: 0 0 0 auto;
+  border: 1px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  color: var(--GBL05A, #8493a7);
+  cursor: pointer;
+  vertical-align: middle;
+}
+.AppHeader .cz-fish-toggle.cz-fish-toggle:hover,
+.AppHeader .cz-fish-toggle.cz-fish-toggle[aria-pressed="true"] {
+  color: #1772f6;
+  background: #eaf2ff;
+}
+.AppHeader .cz-fish-toggle:focus-visible {
+  outline: 2px solid #1772f6;
+  outline-offset: 2px;
+}
+.AppHeader .cz-fish-toggle + .SearchBar {
+  margin-left: 8px !important;
+}
+html:not([data-cz-enabled]) .cz-fish-toggle {
+  display: none !important;
+}
+
+/* CSS covers late media; avatar elements retain the site's original display. */
+html[data-cz-enabled][data-cz-image-less] :is(
+  img, picture, video, canvas, object, embed,
+  .RichContent-cover, .RichContent-cover-inner, .VideoCard, .VideoAnswerPlayer,
+  .RichText figure, .RichText svg, .RichText iframe, .RichContent-inner svg,
+  .LinkCard-image, .ContentItem-image
+):not(:where([class*="avatar" i], [class*="avatar" i] *, picture:has([class*="avatar" i]))) {
+  display: none !important;
+}
+html[data-cz-enabled][data-cz-image-less] *:not(:where([class*="avatar" i], [class*="avatar" i] *)),
+html[data-cz-enabled][data-cz-image-less] *:not(:where([class*="avatar" i], [class*="avatar" i] *))::before,
+html[data-cz-enabled][data-cz-image-less] *:not(:where([class*="avatar" i], [class*="avatar" i] *))::after {
+  background-image: none !important;
+}
+html[data-cz-enabled][data-cz-image-less] .RichContent-inner {
+  margin-left: 0 !important;
+  width: auto !important;
+}
+
+html[data-cz-enabled][data-cz-hide-sidebar] :is(
+  .GlobalSideBar, .GlobalSidebar, .Topstory-sideBar, .Topstory-sidebar,
+  [data-cz-sidebar], .Question-sideColumn, .SearchSideBar,
+  .Search-container > .Search-sideBar
+) {
+  display: none !important;
+}
+
+html[data-cz-enabled][data-cz-hide-ai-nav] .AppHeader :is(
+  [data-cz-hide="nav"],
+  .AppHeader-TabsLink[href*="/aiworks"],
+  .AppHeader-TabsLink[href*="/story"],
+  .AppHeader-TabsDivider,
+  .AppHeader-Tab:has(> [data-cz-hide="nav"])
+) {
+  display: none !important;
+}
+
+html[data-cz-enabled][data-cz-hide-header-actions] .AppHeader :is(
+  [data-cz-hide="actions"], .AppHeader-askButton,
+  .AppHeader-creation, .AppHeader-createButton,
+  a[href^="https://ai.zhihu.com"]
+) {
+  display: none !important;
+}
+
+/* Use the former two-column area as a single reading column. */
+html[data-cz-enabled][data-cz-widen-content] :is(
+  .Topstory-container, .Question-main, .QuestionHeader-content,
+  .Search-container
+) {
+  width: min(var(--cz-content-width, 1440px), calc(100% - 32px)) !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+html[data-cz-enabled][data-cz-widen-content] :is(
+  .Topstory-mainColumn, .Question-mainColumn, .SearchMain
+) {
+  flex: 1 1 0% !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+
+html[data-cz-enabled][data-cz-widen-content][data-cz-hide-sidebar] :is(
+  .Topstory-mainColumn, .Question-mainColumn, .SearchMain
+) {
+  width: 100% !important;
+  margin-right: 0 !important;
+}
+
+html[data-cz-enabled][data-cz-widen-content] :is(.Topstory-mainColumnCard, .QuestionHeader-main) {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+}
+
+html[data-cz-enabled][data-cz-widen-content] :is(.Post-Main, .Post-Row-Content) {
+  width: min(var(--cz-content-width, 1440px), calc(100% - 32px)) !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  margin-inline: auto !important;
+}
+html[data-cz-enabled][data-cz-widen-content] .Post-Main .Post-Row-Content {
+  width: 100% !important;
+}
+
+html[data-cz-enabled][data-cz-widen-content] .AppHeader-inner {
+  width: min(var(--cz-content-width, 1440px), calc(100% - 32px)) !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  padding-inline: 0 !important;
+}
+
+/* Flex children must be able to shrink when zooming or using a small window. */
+html[data-cz-enabled][data-cz-widen-content] .AppHeader :is(.SearchBar, .SearchBar-tool) {
+  min-width: 0 !important;
+}
+html[data-cz-enabled][data-cz-widen-content] .AppHeader .SearchBar-input {
+  width: 100% !important;
+}
+html[data-cz-enabled][data-cz-widen-content] .RichContent-inner {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  html[data-cz-enabled][data-cz-widen-content] :is(.Topstory-container, .Question-main, .QuestionHeader-content, .Search-container) {
+    width: calc(100% - 16px) !important;
+  }
+  html[data-cz-enabled][data-cz-widen-content] .AppHeader-inner {
+    flex-wrap: wrap !important;
+    height: auto !important;
+    gap: 8px !important;
+  }
+  html[data-cz-enabled][data-cz-widen-content] .AppHeader {
+    height: auto !important;
+  }
+}

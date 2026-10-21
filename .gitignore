@@ -1,0 +1,7 @@
+dist/
+__pycache__/
+tests/.chrome-test-profile/
+tests/browser-result-*.html
+tests/preview.png
+tests/popup-fixture.html
+tests/docs-preview/
